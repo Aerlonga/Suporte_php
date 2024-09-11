@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mssql:
+    container_name: sgm-mssql-local
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: unless-stopped
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_SA_PASSWORD: "goMM77$1"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_COLLATION: "LATIN1_GENERAL_100_CI_AS_SC_UTF8"
+    volumes:
+      - './volumes/:/var/opt/mssql/data'
+    user: root
